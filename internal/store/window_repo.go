@@ -31,9 +31,6 @@ func (s *SQLiteStore) CreateWindow(ctx context.Context, w *domain.BerthingWindow
 }
 
 func (s *SQLiteStore) CreateWindowsBatch(ctx context.Context, ws []*domain.BerthingWindow) error {
-	if len(ws) > 1 {
-		ws = ws[:1:1]
-	}
 	for _, w := range ws {
 		if err := s.windowCreate(ctx, w); err != nil {
 			return err
