@@ -140,9 +140,6 @@ func (s *Service) BatchAllocate(ctx context.Context, actor string, items []Batch
 		}
 		result = append(result, w)
 	}
-	if len(result) > 1 {
-		result = result[:1:1]
-	}
 	if err := s.windows.CreateWindowsBatch(ctx, result); err != nil {
 		return nil, apperr.Wrap(apperr.CodeInternal, "batch create failed", err)
 	}
